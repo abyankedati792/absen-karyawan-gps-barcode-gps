@@ -1,0 +1,225 @@
+/* =====================================================================
+   Aplikasi Absensi Karyawan - QR Code + GPS
+   ===================================================================== */
+
+:root {
+    --sidebar-width: 260px;
+    --sidebar-bg: #0b1f33;
+    --sidebar-active: #1d4ed8;
+    --topbar-bg: #ffffff;
+    --page-bg: #f1f5f9;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+body {
+    background: var(--page-bg);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* ---------------- Sidebar ---------------- */
+.wrapper { min-height: 100vh; }
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: 0 0 var(--sidebar-width);
+    overflow-y: auto;
+    z-index: 1030;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    color: #fff;
+}
+
+.brand-icon {
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, .1);
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-text { line-height: 1.15; }
+.brand-text strong { display: block; font-size: .92rem; }
+.brand-text small { color: #93a4bd; font-size: .72rem; }
+
+.sidebar-menu {
+    list-style: none;
+    padding: .75rem .75rem 1rem;
+    margin: 0;
+    flex: 1;
+}
+
+.menu-title {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #64748b;
+    padding: .9rem .6rem .35rem;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: .6rem .7rem;
+    border-radius: 10px;
+    font-size: .88rem;
+    margin-bottom: 2px;
+    transition: background .15s ease, color .15s ease;
+}
+
+.sidebar-menu a:hover { background: rgba(255, 255, 255, .07); color: #fff; }
+.sidebar-menu a.active { background: var(--sidebar-active); color: #fff; box-shadow: 0 6px 16px rgba(29, 78, 216, .35); }
+.menu-icon { width: 20px; text-align: center; }
+
+.sidebar-footer { padding: 1rem; border-top: 1px solid rgba(255, 255, 255, .08); }
+.btn-logout {
+    background: rgba(239, 68, 68, .15);
+    color: #fecaca;
+    border: 1px solid rgba(239, 68, 68, .3);
+    font-size: .85rem;
+}
+.btn-logout:hover { background: #ef4444; color: #fff; }
+
+/* ---------------- Konten ---------------- */
+.content { min-width: 0; display: flex; flex-direction: column; min-height: 100vh; }
+
+.topbar {
+    background: var(--topbar-bg);
+    padding: .85rem 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.topbar-title { font-size: 1.05rem; font-weight: 700; }
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1d4ed8, #38bdf8);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.page { flex: 1; }
+
+/* ---------------- Kartu / statistik ---------------- */
+.card { border-radius: 14px; }
+.stat-card .stat-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: #64748b; }
+.stat-card .stat-value { font-size: 1.55rem; font-weight: 700; line-height: 1.2; }
+
+.table > :not(caption) > * > * { padding: .6rem .75rem; }
+.table thead th { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #64748b; }
+
+.badge { font-weight: 600; }
+
+/* ---------------- Grafik batang ---------------- */
+.chart-bars .bar { border-radius: 6px 6px 0 0; min-height: 3px; }
+.chart-bars .bar-hadir { background: linear-gradient(180deg, #22c55e, #15803d); }
+.chart-bars .bar-terlambat { background: linear-gradient(180deg, #fbbf24, #d97706); }
+
+/* ---------------- Login ---------------- */
+.login-page {
+    background: linear-gradient(135deg, #0b1f33 0%, #1d4ed8 55%, #38bdf8 100%);
+    min-height: 100vh;
+}
+.login-logo {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+.login-page h1, .login-page p { color: #fff; }
+.login-page .text-muted { color: #dbeafe !important; }
+
+/* ---------------- Kamera QR ---------------- */
+.qr-wrap {
+    border: 2px dashed #cbd5e1;
+    border-radius: 16px;
+    padding: 18px;
+    display: inline-block;
+    background: #fff;
+}
+.qr-wrap img, .qr-wrap canvas { display: block; margin: 0 auto; max-width: 100%; }
+
+#videoPindai { border-radius: 12px; }
+
+.scan-line {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 20%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+    box-shadow: 0 0 12px #22d3ee;
+    animation: scanmove 2s ease-in-out infinite;
+}
+@keyframes scanmove {
+    0%, 100% { top: 15%; }
+    50% { top: 80%; }
+}
+
+/* ---------------- Logo perusahaan ---------------- */
+.brand-logo { width: 100%; height: 100%; object-fit: contain; display: block; }
+.login-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.qr-logo { width: 76px; height: 76px; object-fit: contain; margin: 0 auto; }
+
+.logo-preview {
+    width: 96px;
+    height: 96px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 14px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    flex: 0 0 auto;
+}
+.logo-preview img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* ---------------- Responsif ---------------- */
+@media (max-width: 991.98px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: 0 0 40px rgba(0, 0, 0, .35);
+    }
+    .sidebar.sidebar-open { transform: translateX(0); }
+}

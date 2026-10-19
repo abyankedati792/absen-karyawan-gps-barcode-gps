@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" width="640" height="192" role="img" aria-label="PT. Shelter Indonesia">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f33"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="pin2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+
+  <!-- lambang -->
+  <g transform="translate(4 8) scale(1.25)">
+    <rect x="1" y="1" width="62" height="62" rx="17" fill="url(#bg2)"/>
+    <g fill="#ffffff" fill-opacity=".92">
+      <rect x="10" y="10" width="12" height="12" rx="3"/>
+      <rect x="42" y="10" width="12" height="12" rx="3"/>
+      <rect x="10" y="42" width="12" height="12" rx="3"/>
+    </g>
+    <g fill="#0b1f33">
+      <rect x="14" y="14" width="4" height="4" rx="1"/>
+      <rect x="46" y="14" width="4" height="4" rx="1"/>
+      <rect x="14" y="46" width="4" height="4" rx="1"/>
+    </g>
+    <path d="M32 17c-6.1 0-11 4.8-11 10.8 0 8.1 11 18.2 11 18.2s11-10.1 11-18.2C43 21.8 38.1 17 32 17z" fill="url(#pin2)"/>
+    <circle cx="32" cy="28" r="4.6" fill="#0b1f33"/>
+  </g>
+
+  <!-- teks -->
+  <text x="98" y="44" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="26"
+        font-weight="700" fill="#0b1f33">PT. SHELTER</text>
+  <text x="98" y="72" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="24"
+        font-weight="400" fill="#1d4ed8" letter-spacing="4">INDONESIA</text>
+</svg>
